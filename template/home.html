@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes | How-Tos,Videos and More</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <span style="font-size: 1.8vw;color:#5E3D31;position: absolute;top:3vh;left: 6vw;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-weight:lighter;">
+                NaBha's</span>
+            <a href="{% url 'main:home' %}" class="logo">Recipes</a>
+            <div class="nav-items">
+                <div class="nav-item">
+                    <a href="{% url 'main:veg' %}"  class="items">Veg</a>
+                    <div class="submenu">
+                        <a href="{% url 'veg:soups' %}">Soups</a>
+                        <a href="{% url 'veg:curries' %}">Curries</a>
+                        <a href="{% url 'veg:vegbiryani' %}">Veg Biryani</a>
+                        <a href="{% url 'veg:fastfood' %}">Fast food</a>
+                        <a href="{% url 'veg:starters' %}">Starters</a>
+                        <a href="{% url 'veg:stirfry' %}">Stir Fry</a>
+                        <a href="{% url 'veg:quickandeasy' %}">Quick & Easy</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'main:nonveg' %}">Non-Veg</a>
+                    <div class="submenu">
+                        <a href="{% url 'nonveg:chicken' %}">Chicken</a>
+                        <a href="{% url 'nonveg:seafood' %}">Seafood</a>
+                        <a href="{% url 'nonveg:starters' %}">Starters</a>
+                        <a href="{% url 'nonveg:meat' %}">Meat</a>
+                        <a href="{% url 'nonveg:beef' %}">Beef</a>
+                        <a href="{% url 'nonveg:pork' %}">Pork</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'main:desserts' %}" class="items">Desserts</a>
+                    <div class="submenu">
+                        <a href="{% url 'desserts:cakes' %}">Cakes</a>
+                        <a href="{% url 'desserts:chocolate' %}">Chocolate</a>
+                        <a href="{% url 'desserts:icecream' %}">Ice Cream</a>
+                        <a href="{% url 'desserts:fruits' %}">Fruits</a>
+                        <a href="{% url 'desserts:nuts' %}">Nuts</a>
+                        <a href="{% url 'desserts:cookies' %}">Cookies</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'main:snacks' %}" class="items">Snacks</a>
+                    <div class="submenu">
+                        <a href="{% url 'snacks:traditional' %}">Traditional</a>
+                        <a href="{% url 'snacks:chips' %}">Chips</a>
+                        <a href="{% url 'snacks:fries' %}">Fries</a>
+                        <a href="{% url 'snacks:springrolls' %}">Spring Rolls</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'main:drinks' %}" class="items">Drinks</a>
+                    <div class="submenu">
+                        <a href="{% url 'drinks:milkshakes' %}">MilkShakes</a>
+                        <a href="{% url 'drinks:smoothies' %}">Smoothies</a>
+                        <a href="{% url 'drinks:tea' %}">Tea</a>
+                        <a href="{% url 'drinks:coffee' %}">Coffee</a>
+                        <a href="{% url 'drinks:juices' %}">Juices</a>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'main:tiffins' %}" class="items">Tiffins</a>
+                    <div class="submenu">
+                        <a href="{% url 'tiffins:idly' %}">Idly</a>
+                        <a href="{% url 'tiffins:dosa' %}">Dosa</a>
+                        <a href="{% url 'tiffins:puri' %}">Puri</a>
+                        <a href="{% url 'tiffins:vada' %}">Vada</a>
+                        <a href="{% url 'tiffins:chapati' %}">Chapati</a>
+                        <a href="{% url 'tiffins:parota' %}">Parota</a>
+                    </div>
+                </div>
+            </div>
+            <input type="text" placeholder="Search for recipes..." class="search-bar">
+            <a href="{% url 'main:login' %}" class="login">Login</a>
+        </div>
+    </nav>
+
+    {% block body %}
+
+    <div style="width: 100%;height: 150vh;">
+        <aside class="main">
+            <img src="../static/images/main/main.jpg" alt="" style="width: 63vw;">
+            <h3>Comfort Food Recipes</h3>
+            <h1 style="font-size: 2.5vw;">Grandma's Favorite Comfort Food Recipes</h1>
+            <span style="font-size: 1.2vw;">Grandma loves you,it's true.And she's already proud of you,we realize.But why push your luck? Master these classic comfort food recipes,and you're golden in Grandma's eyes...forever!</span>
+        </aside>
+        <aside class="sub"><br>
+            <h1>The Latest</h1>
+            <div class="main_recipes">
+               
+                {% for i in l1 %}
+                _________________________________________ <br><br>
+                <div class="main_recipe">
+                    <img src="{{ i.image.url }}" alt="">
+                    <a href="{% url 'main:showLatest' i.id %}">{{ i.name}}</a><br><br>
+                    <div>{{ i.matter }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </aside>
+    </div>
+
+    {% endblock %}
+
+    {% block trending %}
+
+    <div style="background-color:rgb(169, 168, 168);margin: 2vw;border-radius: 1vw;">
+        <h1 id="heading1">Trending Recipes</h1>
+        <section class="recipes-container">
+            {% for i in t1 %}
+            <div class="recipe-card">
+                <img src="{{ i.image.url }}">
+                <h3>{{ i.name }}</h3>
+                <p class="description">{{ i.matter }}</p>
+                <a href="{% url 'main:showTrending' i.id %}" class="btn">View Recipe</a>
+              </div>
+            {% endfor%}
+        </section>
+    </div>
+    
+    {% endblock %}
+
+    <footer>
+    <div class="footer-content">
+        <div class="footer-section" style="min-width: 30vw;">
+            <h3>About Us</h3>
+            <p>We provide the best collection of recipes from all around the world.</p>
+        </div>
+
+        <div class="footer-section" style="margin-left: 6vw;">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{% url 'main:home' %}">Home</a></li>
+                <li><a href="{% url 'main:veg' %}">Veg</a></li>
+                <li><a href="{% url 'main:nonveg' %}">Non-Veg</a></li>
+                <li><a href="{% url 'main:desserts' %}">Desserts</a></li>
+                <li><a href="{% url 'main:snacks' %}">Snacks</a></li>
+                <li><a href="{% url 'main:drinks' %}">Drinks</a></li>
+                <li><a href="{% url 'main:tiffins' %}">Tiffins</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: <a href="https://nandinikamireddy11@gmail.com">nandinikamireddy11@gmail.com</a></p>
+            <p>Phone: 7989198226</p>
+        </div>
+
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <ul>
+                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-whatsapp"></i></a></li>
+            </ul>
+        </div>
+    </div><br><br><br>
+    _______________________________________________________________________________________________________________________________________
+    <div class="footer-bottom"><br>
+        <p>© 2025 RecipeSite. All rights reserved.</p>
+    </div>
+    </footer>
+
+</body>
+</html>

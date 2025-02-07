@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+
+{% block body %}
+
+<div style="text-align: center;padding:10vh;">
+    <img src="../../static/images/drinks/drinks.jpg" alt="" style="width: 80%;border-radius: 1vw;">
+</div>
+
+<div>
+    <h1 style="text-align: center;font-size: 5vw;font-family: 'Pacifico';text-decoration: underline;">Drinks</h1>
+    <div class="contents">
+        <a href="{% url 'drinks:milkshakes' %}">MilkShakes</a>
+        <a href="{% url 'drinks:smoothies' %}">Smoothies</a>
+        <a href="{% url 'drinks:tea' %}">Tea</a>
+        <a href="{% url 'drinks:coffee' %}">Coffee</a>
+        <a href="{% url 'drinks:juices' %}">Juices</a>
+    </div>
+</div><br><br>
+
+{% endblock %}
+
+{% block trending %}
+{% endblock %}

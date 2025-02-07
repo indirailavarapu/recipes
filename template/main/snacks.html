@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+
+{% block body %}
+
+<div style="text-align: center;padding:10vh;">
+    <img src="../../static/images/snacks/snacks.webp" alt="" style="width: 80%;border-radius: 1vw;">
+</div>
+
+<div>
+    <h1 style="text-align: center;font-size: 5vw;font-family: 'Pacifico';text-decoration: underline;">Snacks</h1>
+    <div class="contents">
+        <a href="{% url 'snacks:traditional' %}">Traditional</a>
+        <a href="{% url 'snacks:chips' %}">Chips</a>
+        <a href="{% url 'snacks:fries' %}">Fries</a>
+        <a href="{% url 'snacks:springrolls' %}">Spring Rolls</a>
+    </div>
+</div><br><br>
+
+{% endblock %}
+
+{% block trending %}
+{% endblock %}

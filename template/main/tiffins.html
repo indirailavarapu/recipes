@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+{% block body %}
+
+<div style="text-align: center;padding:10vh;">
+    <img src="../../static/images/tiffins/tiffins.webp" alt="" style="width: 80%;border-radius: 1vw;">
+</div>
+
+<div>
+    <h1 style="text-align: center;font-size: 5vw;font-family: 'Pacifico';text-decoration: underline;">Tiffins</h1>
+    <div class="contents">
+        <a href="{% url 'tiffins:idly' %}">Idly</a>
+        <a href="{% url 'tiffins:dosa' %}">Dosa</a>
+        <a href="{% url 'tiffins:puri' %}">Puri</a>
+        <a href="{% url 'tiffins:vada' %}">Vada</a>
+        <a href="{% url 'tiffins:chapati' %}">Chapati</a>
+        <a href="{% url 'tiffins:parota' %}">Parota</a>
+    </div>
+</div><br><br>
+
+{% endblock %}
+
+{% block trending %}
+{% endblock %}

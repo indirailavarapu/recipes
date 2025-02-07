@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+{% block body %}
+
+<div style="text-align: center;padding:10vh;">
+    <img src="../../static/images/nonveg/nonveg.webp" alt="" style="width: 80%;border-radius: 1vw;">
+</div>
+
+<div>
+    <h1 style="text-align: center;font-size: 5vw;font-family: 'Pacifico';text-decoration: underline;">NonVeg-Items</h1>
+    <div class="contents">
+        <a href="{% url 'nonveg:chicken' %}">Chicken</a>
+        <a href="{% url 'nonveg:seafood' %}">Seafood</a>
+        <a href="{% url 'nonveg:starters' %}">Starters</a>
+        <a href="{% url 'nonveg:meat' %}">Meat</a>
+        <a href="{% url 'nonveg:beef' %}">Beef</a>
+        <a href="{% url 'nonveg:pork' %}">Pork</a>
+    </div>
+</div><br><br>
+
+{% endblock %}
+
+{% block trending %}
+{% endblock %}

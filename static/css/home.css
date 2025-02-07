@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color: #FF7043;
+    padding: 0vh 0vw 2vh 1vw;
+}
+.logo {
+    font-size: 5vw;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive; 
+    text-decoration: none;
+    color: #5E3D31;
+}
+.search-bar{
+    padding: 0.7vw;
+    font-size: 1.2vw;
+    border: 0.1vw solid #c0bcbc;
+    border-radius: 0.5vw;
+    width: 17vw;
+    outline: none;
+    position: absolute;
+    right: 9%;
+    top: 13vh;
+}
+.login {
+    font-size: 1.5vw;
+    font-weight: 500;
+    text-decoration: none;
+    right: 3%;
+    padding: 0.5vw;
+    background-color:#FFF1E6;
+    color: #e34a1c;
+    border-radius: 0.5vw;
+    position: absolute;
+    top: 13.3vh;
+}
+.nav-items {
+    display: inline-flex;
+    text-align: center;
+    gap: 2vw;
+    position: relative;
+    left: 5%;
+    top: 5vh;
+}
+.nav-items a{
+    text-decoration: none;
+    color: #FFF1E6;
+    font-size: 1.5vw;
+}
+.nav-items a:hover {
+    color: #5E3D31; 
+}
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #FFF1E6;
+    border-radius: 0.5vw;
+    padding: 0.5vw;
+    top: 107%;
+    z-index: 100;
+    max-height: 35vh; 
+    overflow-y: auto;
+}
+.submenu a {
+    display: block;
+    padding: 1vh 0.5vw;
+    text-decoration: none;
+    color: #FF7043;
+    font-size: 1.3vw;
+    width: 9vw;
+}
+.submenu a:hover {
+    background-color: #5E3D31;
+    color: #FF7043;
+}
+.nav-item:hover .submenu {
+    display: block;
+}
+.main{
+    margin-top: 5vh;
+    margin-left: 2vw;
+    width: 63vw;
+    height: auto;
+    float: left;
+}
+.sub{
+    width: 30vw;
+    height: auto;
+    float: left;
+}
+.sub h1{
+    font-size: 2.5vw;
+    color: #5E3D31;
+    margin-left: 1.5vw;
+}
+.sub img{
+    width: 13vw;
+    height: 8vw;
+    border-radius: 1vw; 
+    transition: all 0.5s ease;
+    float: left;
+}
+.sub img:hover{
+    transform: scale(1.1);
+}
+.main_recipe a{
+    text-decoration: none;
+    color: #5E3D31;
+    font-size: 1.7vw;
+    float: left;
+    margin-left: 1vw;
+}
+.main_recipe a:hover{
+    color: #FF7043;
+    text-decoration: underline;
+}
+.main_recipe div{
+    position: relative;
+    font-size: 1.1vw;
+    left: 1vw;
+}
+.main_recipe{
+    width: 29vw;
+    height: 18vh;
+    padding: 1vw 1.5vw;
+}
+.main_recipes{
+    margin-left: 1.5vw;
+}
+
+#heading1 {
+    text-align: center;
+    padding-top: 2vw;
+    font-size: 4vw;
+}
+.recipes-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1vw;
+}
+.recipe-card {
+    background-color: white;
+    border-radius: 1vw;
+    width: 20vw;
+    height: 70vh;
+    margin-right: 1vw;
+    margin-top: 5vh;
+    margin-left: 2vw;
+    box-shadow: 0 1vw 1vw rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.recipe-card img {
+    width: 80%;
+    border-radius: 1vw;
+    margin-top: 3vh;
+} 
+.recipe-card h3 {
+    margin: 3vh 0;
+}
+.recipe-card .description {
+    font-size: 1.2vw;
+    color: #666;
+    height: 13vh;
+}
+.btn {
+    padding: 2vh 1.4vw;
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    border-radius: 0.5vw;
+    text-decoration: none;
+}
+  
+/* Footer Styles */
+footer {
+    background-color: #dbd6d6;
+    color: rgb(0, 0, 0);
+    margin-top: 10vh;
+    padding: 5vh 2vw;
+    height: 80vh;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2vw;
+    padding: 0 1.5vw;
+}
+.footer-section {
+    flex: 1;
+    min-width: 15vw;
+}
+.footer-section h3 {
+    font-size: 1.5vw;
+    margin-bottom: 5vh;
+}
+.footer-section p, .footer-section ul {
+    font-size: 1.2vw;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin-bottom: 3vh;
+}
+.footer-section ul li a {
+    color: black;
+    text-decoration: none;
+}
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+.footer-section.social ul {
+    display: flex;
+    gap: 1.3vw;
+}
+.footer-section.social ul li a {
+    font-size: 1.3vw;
+}
+.footer-bottom {
+    text-align: center;
+    color: black;
+}
+.footer-bottom p {
+    font-size: 1.2vw;
+}
+
+.contents {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.contents a{
+    text-decoration: none;
+    color: #5E3D31;
+    padding: 10vh 6vw;
+    font-size: 2.5vw;
+    font-weight: bold;
+}
+.contents a:hover{
+    color: #FF7043;
+    text-decoration: underline;
+}

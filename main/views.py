@@ -42,6 +42,7 @@ def calories(request):
     return render(request,'main/calories.html')
 
 
+
 def signup_view(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -63,18 +64,14 @@ def signup_view(request):
 
 def login_view(request):
     if request.method == "POST":
-        username = request.POST.get('username', '').strip()
-        password = request.POST.get('password', '').strip()
-
-        if not username or not password:
-            messages.error(request, "Username and password are required!")
-            return redirect('main:login')
+        username = request.POST['username']
+        password = request.POST['password']
 
         user = authenticate(request, username=username, password=password)
 
-        if user:
+        if user is not None:
             login(request, user)
-            return redirect(reverse('main:home')) 
+            return redirect('main:home')  # Change to your homepage
         else:
             messages.error(request, "Invalid credentials!")
             return redirect('main:login')

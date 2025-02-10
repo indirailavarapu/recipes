@@ -139,3 +139,10 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TEMPLATE_DIR=os.path.join(BASE_DIR,'template')
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"  # For Gmail
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "nandinikamireddy11@gmail.com"  # Replace with your email
+EMAIL_HOST_PASSWORD = "NANDHU@BAVA"  # Use an app password for security

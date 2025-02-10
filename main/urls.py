@@ -14,8 +14,7 @@ urlpatterns = [
     path('calories/',calories,name='calories'),
     path('showLatest/<int:id>',showLatest,name='showLatest'),
     path('showTrending/<int:id>',showTrending,name='showTrending'),
-     path('signup/', signup_view, name='signup'),
+    path('signup/', signup_view, name='signup'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
-
 ]

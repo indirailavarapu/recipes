@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
-import pymysql
-pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'veg','nonveg','desserts','snacks','drinks','tiffins',
-    'whitenoise','corsheaders',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +55,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -88,15 +85,10 @@ WSGI_APPLICATION = 'recipes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'ekEappkQytQxPEXSLPMFbFQMgcHXRnat',
-        'HOST': 'autorack.proxy.rlwy.net',
-        'PORT': '13729',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 
 # Password validation
@@ -147,10 +139,3 @@ STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TEMPLATE_DIR=os.path.join(BASE_DIR,'template')
-
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"  # For Gmail
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "nandinikamireddy11@gmail.com"  # Replace with your email
-EMAIL_HOST_PASSWORD = "bmje ugnv cbne gsda"  # Use an app password for security

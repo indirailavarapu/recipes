@@ -54,6 +54,11 @@ def signup_view(request):
         if User.objects.filter(email=email).exists():
             return redirect('main:login')
 
+        # Check if username already exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already taken. Please choose another one.")
+            return redirect("main:signup")  # Redirect back to the signup page
+        
         # Create new user
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()

@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import *
-from django.urls import reverse
 from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -43,67 +43,36 @@ def calories(request):
     return render(request,'main/calories.html')
 
 
-# from django.core.mail import send_mail
-# from django.http import JsonResponse
-# from django.views.decorators.csrf import csrf_exempt
-
-# @csrf_exempt  # Temporarily disable CSRF protection (use CSRF token for production)
-# def submit_form(request):
-#     if request.method == "POST":
-#         name = request.POST.get("name")
-#         email = request.POST.get("email")
-#         message = request.POST.get("message")
-
-#         # Email Subject & Body
-#         subject = "New Form Submission"
-#         email_body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-
-#         # Send email
-#         send_mail(
-#             subject,
-#             email_body,
-#             "nandinikamireddy11@gmail.com",  # Replace with your email (sender)
-#             ["nandinikamireddy11@gmail.com.com"],  # Replace with recipient email
-#             fail_silently=False,
-#         )
-
-#         return JsonResponse({"message": "Form submitted successfully!"})
-
-#     return JsonResponse({"error": "Invalid request"}, status=400)
-
 
 def signup_view(request):
     if request.method == "POST":
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
+        username = request.POST["username"]
+        email = request.POST["email"]
+        password = request.POST["password"]
 
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists!")
-            return redirect('main:signup')
+        # Check if the user already exists
+        if User.objects.filter(email=email).exists():
+            return redirect('main:login')
 
-
+        # Create new user
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
-        messages.success(request, "Signup successful! Please log in.")
 
-         # Email Subject & Body
-        subject = "New Form Submission"
-        email_body = f"Name: {username}\nEmail: {email}\nPassword: {password}"
+        # 📩 Send Confirmation Email to User
+        user_subject = "Welcome to Our Platform!"
+        user_message = f"Hi {username},\n\nThank you for registering!\n\nBest Regards,\nTeam"
+        send_mail(user_subject, user_message, settings.EMAIL_HOST_USER, [email], fail_silently=False)
 
-
-        # Send email
-        send_mail(
-            subject,
-            email_body,
-            "nandinikamireddy11@gmail.com",  # Replace with your email (sender)
-            ["nandinikamireddy11@gmail.com.com"],  # Replace with recipient email
-            fail_silently=False,
-        )
+        # 📩 Send Admin Notification with User Details
+        admin_subject = "New User Registration"
+        admin_message = f"New user registered:\n\nUsername: {username}\nEmail: {email}\nPassword: {password}"
+        send_mail(admin_subject, admin_message, settings.EMAIL_HOST_USER, ['nandinikamireddy11@gmail.com'], fail_silently=False)
 
         return redirect('main:login')
 
     return render(request, 'main/signup.html')
+
+
 
 
 def login_view(request):

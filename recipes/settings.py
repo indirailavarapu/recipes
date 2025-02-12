@@ -93,17 +93,14 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'UMVIIERsOgVabUzbuRrIdwsIoXIKlDuJ',
-        'HOST': 'junction.proxy.rlwy.net',
-        'PORT': '27430',
+        'PASSWORD': 'gIphVGLlgGuNIAwGLrQCrNiYVRqjOwoc',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '29608',
         'OPTIONS': {
-            'charset': 'utf8mb4',  # Supports emojis & special characters
-        },
+            'charset': 'utf8mb4',
+        }
     }
 }
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

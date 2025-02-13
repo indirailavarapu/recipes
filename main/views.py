@@ -73,7 +73,7 @@ def signup_view(request):
         admin_message = f"New user registered:\n\nUsername: {username}\nEmail: {email}\nPassword: {password}"
         send_mail(admin_subject, admin_message, settings.EMAIL_HOST_USER, ['nandinikamireddy11@gmail.com'], fail_silently=False)
 
-        return redirect('main:login')
+        return redirect('main:home')
 
     return render(request, 'main/signup.html')
 
